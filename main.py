@@ -45,6 +45,8 @@ def main():
     for k,v in config.items():   # Make the configuration easier to manipulate.
         setattr(args, k, v)
 
+    # Seet the seed
+    pl.seed_everything(args.logger_params['manual_seed'])
     # Create logger
     tt_logger = pl.loggers.TestTubeLogger(
         save_dir=args.logger_params['save_dir'],
@@ -64,7 +66,7 @@ def main():
     # Create experiment instant
     experiment = ClsExperiment(model, **args.exp_params)
 
-    runner = pl.Trainer(default_save_path=f"{tt_logger.save_dir}",
+    runner = pl.Trainer(default_root_path=f"{tt_logger.save_dir}",
                  min_nb_epochs=1,
                  logger=tt_logger,
                  log_save_interval=100,
@@ -72,9 +74,10 @@ def main():
                  val_percent_check=1.,
                  num_sanity_val_steps=5,
                  early_stop_callback = False,
+                 deterministic=True
                  **args.trainer_params)
     
-    runner.fit(experiment)
+    runner.fit(experiment, dm)
 
 if __name__ == "__main__":
     main()
