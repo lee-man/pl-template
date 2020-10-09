@@ -37,7 +37,7 @@ def main():
     args = parser.parse_args()
 
     # Parse the arguments
-    with open(args.filename, 'r') as file:
+    with open(args.config, 'r') as file:
         try:
             config = yaml.safe_load(file)
         except yaml.YAMLError as exc:
