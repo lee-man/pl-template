@@ -12,20 +12,7 @@ import data
 import models
 from experiment import ClsExperiment
 
-
-class ClassificationModel(pl.LightningModule):
-    '''
-    Generic PyTorch-Lightning model for classfication task
-    '''
-    def __init__(self, model, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.model = model
     
-    def forward(self, x):
-        x = self.model(x)
-        return x
-    
-
 
 
 def main():
@@ -67,7 +54,6 @@ def main():
     experiment = ClsExperiment(model, **args.exp_params)
 
     runner = pl.Trainer(default_root_path=f"{tt_logger.save_dir}",
-                 min_nb_epochs=1,
                  logger=tt_logger,
                  log_save_interval=100,
                  train_percent_check=1.,
