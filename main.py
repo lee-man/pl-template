@@ -67,7 +67,7 @@ def main():
                         logger=tt_logger,
                         benchmark=True,
                         deterministic=True,
-
+                        distributed_backend='dp',
                         **args.trainer_params)
     
     runner.fit(experiment, datamodule=dm)
