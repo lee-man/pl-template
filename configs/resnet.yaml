@@ -5,7 +5,7 @@ model_params:
 
 exp_params:
   dataset: 'cifar10'
-  data_path: '/research/detp2/mli/data/cls'
+  data_path: '/research/dept2/mli/data/cls'
   # img_size: 32
   batch_size: 256 # Better to have a square number
   num_workers: 16
