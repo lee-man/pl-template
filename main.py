@@ -57,7 +57,7 @@ def main():
                  logger=tt_logger,
                  **args.trainer_params)
     
-    runner.fit(experiment, dm)
+    runner.fit(experiment, datamodule=dm)
 
 if __name__ == "__main__":
     main()
