@@ -53,7 +53,7 @@ def main():
     # Create experiment instant
     experiment = ClsExperiment(model, **args.exp_params)
 
-    runner = pl.Trainer(default_root_path=f"{tt_logger.save_dir}",
+    runner = pl.Trainer(default_root_dir=f"{tt_logger.save_dir}",
                  logger=tt_logger,
                  log_save_interval=100,
                  train_percent_check=1.,
