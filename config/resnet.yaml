@@ -1,0 +1,28 @@
+# Just a simple example brought from https://github.com/AntixK/PyTorch-VAE/blob/master/configs/vae.yaml
+model_params:
+  name: "resnet18"
+  
+
+exp_params:
+  dataset: 'cifar10'
+  data_path: '/research/detp2/mli/data/cls'
+  # img_size: 32
+  batch_size: 256 # Better to have a square number
+  num_worker: 16
+  lr: 0.1
+  weight_decay: 5e-4
+  momentum: 0.9
+  scheduler_gamma: 0.1
+
+trainer_params:
+  gpus: 1
+  max_nb_epochs: 50
+  max_epochs: 350
+  
+
+# The augments for logging parameters
+logger_params:
+  save_dir: 'exp/'
+  name: 'resnet18'
+  debug: False     # If true, it doesn't log anything.
+  manual_seed: 208

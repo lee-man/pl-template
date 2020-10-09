@@ -10,13 +10,15 @@ This repo includes the general template for deep learning training, using [PyTor
 ```
 `Project name`
 └── main.py # The entry to run the training and evaluation.
-
+└── experiment.py # The Pytorch-Lightning training/evaluation module definition.
+└── eval.py # Then entry to evaluate the trained models.
 └── model # The folder to maintain model definition.
     └── __init__.py
     └── model1.py
     └── model2.py
     └── ...
 └── utils # The folder to include some useful utility functions and evalutation metrics
+    └── __init__.py
     └── utils.py
     └── metrics.py
 └── data # The folder to maintain data module.
@@ -64,7 +66,7 @@ What it does
 First, install dependencies   
 ```bash
 # clone project   
-git clone https://github.com/YourGithubName/deep-learning-project-template
+git clone https://github.com/YourGithubName/pl-template
 
 # install project   
 cd pl-template
