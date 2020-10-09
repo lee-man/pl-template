@@ -55,12 +55,6 @@ def main():
 
     runner = pl.Trainer(default_root_dir=f"{tt_logger.save_dir}",
                  logger=tt_logger,
-                 log_save_interval=100,
-                 train_percent_check=1.,
-                 val_percent_check=1.,
-                 num_sanity_val_steps=5,
-                 early_stop_callback = False,
-                 deterministic=True,
                  **args.trainer_params)
     
     runner.fit(experiment, dm)
