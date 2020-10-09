@@ -47,9 +47,9 @@ def main():
 
     # Create logger
     tt_logger = pl.loggers.TestTubeLogger(
-        save_dir=args.logging_params['save_dir'],
-        name=args.logging_params['name'],
-        debug=args.logging_params['debug'],
+        save_dir=args.logger_params['save_dir'],
+        name=args.logger_params['name'],
+        debug=args.logger_params['debug'],
         create_git_tag=False,
     )
 
