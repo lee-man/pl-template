@@ -41,7 +41,7 @@ class ClsExperiment(pl.LightningModule):
     
     def validation_step(self, batch, batch_idx):
         inputs, targets = batch
-        outputs = self(x)
+        outputs = self(inputs)
         val_loss = F.cross_entropy(outputs, targets)
         _, predicted = outputs.max(1)
         acc = accuracy(predicted, targets)
