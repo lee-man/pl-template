@@ -31,7 +31,7 @@ class ClsExperiment(pl.LightningModule):
     
     def training_step(self, batch, batch_idx):
         inputs, targets = batch
-        outputs = self(x)
+        outputs = self(inputs)
         loss = F.cross_entropy(outputs, targets)
         _, predicted = outputs.max(1)
         acc = accuracy(predicted, targets)
