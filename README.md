@@ -11,7 +11,6 @@ This repo includes the general template for deep learning training, using [PyTor
 `Project name`
 └── main.py # The entry to run the training and evaluation.
 └── experiment.py # The Pytorch-Lightning training/evaluation module definition.
-└── eval.py # Then entry to evaluate the trained models.
 └── model # The folder to maintain model definition.
     └── __init__.py
     └── model1.py
