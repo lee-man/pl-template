@@ -2,7 +2,7 @@
 This repo includes the general template for deep learning training, using [PyTorch Lightning](https://github.com/PytorchLightning/pytorch-lightning) library. Use this template to start new deep learning / ML projects.
 
 - Built in requirements
-- Examples with MNIST
+- Examples with CIFAR10
 - Badges
 - Bibtex
 

@@ -38,7 +38,7 @@ def main():
     tt_logger = pl.loggers.TestTubeLogger(
         save_dir=args.logger_params['save_dir'],
         name=args.logger_params['name'],
-        debug=args.logger_params['debug'],
+        debug=args.debug,
         create_git_tag=False,
     )
 
@@ -53,9 +53,22 @@ def main():
     # Create experiment instant
     experiment = ClsExperiment(model, **args.exp_params)
 
+    if args.debug:
+        runner = pl.Trainer(
+            default_root_dir=f"{tt_logger.save_dir}",
+            logger=tt_logger,
+            benchmark=True,
+            deterministic=True,
+            overfit_batches=0.01,
+            **args.trainer_params
+        )
+
     runner = pl.Trainer(default_root_dir=f"{tt_logger.save_dir}",
-                 logger=tt_logger,
-                 **args.trainer_params)
+                        logger=tt_logger,
+                        benchmark=True,
+                        deterministic=True,
+
+                        **args.trainer_params)
     
     runner.fit(experiment, datamodule=dm)
 

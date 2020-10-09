@@ -15,7 +15,7 @@ exp_params:
   scheduler_gamma: 0.1
 
 trainer_params:
-  gpus: 1
+  gpus: 2
   max_epochs: 350
   
 
@@ -25,3 +25,6 @@ logger_params:
   name: 'resnet18'
   debug: False     # If true, it doesn't log anything.
   manual_seed: 208
+
+
+debug: False
