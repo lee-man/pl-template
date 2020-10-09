@@ -33,7 +33,7 @@ def main():
     parser.add_argument('--config',  '-c',
                         metavar='FILE',
                         help =  'path to the config file',
-                        default='configs/setup.yaml')
+                        default='configs/resnet.yaml')
     args = parser.parse_args()
 
     # Parse the arguments
@@ -76,7 +76,8 @@ def main():
     
     runner.fit(experiment)
 
-
+if __name__ == "__main__":
+    main()
 
 
 
