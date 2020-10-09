@@ -32,7 +32,7 @@ def main():
     for k,v in config.items():   # Make the configuration easier to manipulate.
         setattr(args, k, v)
 
-    # Seet the seed
+    # Set the seed
     pl.seed_everything(args.logger_params['manual_seed'])
     # Create logger
     tt_logger = pl.loggers.TestTubeLogger(

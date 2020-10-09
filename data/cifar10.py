@@ -27,7 +27,7 @@ class Cifar10DataModule(pl.LightningDataModule):
     #       datasets.CIFAR10(self.datapath, train=False, download=True)
 
       # OPTIONAL, called for every GPU/machine (assigning state is OK)
-    def setup(self):
+    def setup(self, stage=None):
           # transforms
         transform_train = transforms.Compose([
             transforms.RandomCrop(32, padding=4),
@@ -43,11 +43,17 @@ class Cifar10DataModule(pl.LightningDataModule):
                                  (0.2023, 0.1994, 0.2010)),
         ])
 
-        self.train_set = torchvision.datasets.CIFAR10(
-            root=self.data_path, train=True, download=True, transform=transform_train)
+        if stage == 'fit' or stage is None:
+            self.train_set = torchvision.datasets.CIFAR10(
+                root=self.data_path, train=True, download=True, transform=transform_train)
 
-        self.val_set = torchvision.datasets.CIFAR10(
-            root=self.data_path, train=False, download=True, transform=transform_test)
+            self.val_set = torchvision.datasets.CIFAR10(
+                root=self.data_path, train=False, download=True, transform=transform_test)
+
+        # Assign test dataset for use in dataloader(s)
+        if stage == 'test' or stage is None:
+            self.test_set = torchvision.datasets.CIFAR10(
+                root=self.data_path, train=False, download=True, transform=transform_test)
         
 
       # return the dataloader for each split
@@ -60,4 +66,9 @@ class Cifar10DataModule(pl.LightningDataModule):
         val_datalodaer = torch.utils.data.DataLoader(
             self.val_set, batch_size=self.batch_size, shuffle=False, num_workers=self.num_workers, pin_memory=True)
         return val_datalodaer
+
+    def test_dataloader(self):
+        test_datalodaer = torch.utils.data.DataLoader(
+            self.test_set, batch_size=self.batch_size, shuffle=False, num_workers=self.num_workers, pin_memory=True)
+        return test_datalodaer
 
