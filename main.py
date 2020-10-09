@@ -60,7 +60,7 @@ def main():
                  val_percent_check=1.,
                  num_sanity_val_steps=5,
                  early_stop_callback = False,
-                 deterministic=True
+                 deterministic=True,
                  **args.trainer_params)
     
     runner.fit(experiment, dm)
