@@ -81,9 +81,19 @@ python run.py --config config/config.yml
 ### Config file
 ```yaml
 model_params:
-  name: "<name of VAE model>"
-  in_channels: 3
-  latent_dim: 
+  name: "<name of classification model>"
+    .
+    .
+    .
+
+exp_params:
+  dataset: "<name of dataset>"
+    .
+    .
+    .
+
+trainer_params:
+  gpus: 1
     .         # Other parameters required by the model
     .
     .
