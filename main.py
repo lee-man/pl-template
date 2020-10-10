@@ -64,7 +64,7 @@ def main():
         )
 
     # Setting checkpointing callback function
-    checkpoint_callback = pl.callback.ModelCheckpoint(
+    checkpoint_callback = pl.callbacks.ModelCheckpoint(
         monitor='val_acc',
         mode='min'
     )
