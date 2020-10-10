@@ -66,9 +66,9 @@ def main():
     else:
         # Setting checkpointing callback function
         checkpoint_callback = pl.callbacks.ModelCheckpoint(
-            filepath=f"{tt_logger.save_dir}"+"/checkpoints/{epoch}-{val_acc:.2f}",
             monitor='val_acc',
-            mode='max'
+            mode='max',
+            save_last=True
         )
 
         runner = pl.Trainer(default_root_dir=f"{tt_logger.save_dir}",
