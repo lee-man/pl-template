@@ -75,7 +75,7 @@ def main():
                             logger=tt_logger,
                             benchmark=True,
                             deterministic=True,
-                            distributed_backend='ddp',
+                            # distributed_backend='ddp',
                             checkpoint_callback=checkpoint_callback,
                             **args.trainer_params)
     
