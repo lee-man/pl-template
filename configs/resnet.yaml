@@ -26,5 +26,3 @@ logger_params:
   debug: False     # If true, it doesn't log anything.
   manual_seed: 208
 
-
-debug: False

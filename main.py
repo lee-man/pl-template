@@ -21,6 +21,7 @@ def main():
                         metavar='FILE',
                         help =  'path to the config file',
                         default='configs/resnet.yaml')
+    parser.add_argument('--debug', action='store_true')
     args = parser.parse_args()
 
     # Parse the arguments
