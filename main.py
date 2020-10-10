@@ -63,19 +63,21 @@ def main():
             **args.trainer_params
         )
 
-    # Setting checkpointing callback function
-    checkpoint_callback = pl.callbacks.ModelCheckpoint(
-        monitor='val_acc',
-        mode='max'
-    )
+    else:
+        # Setting checkpointing callback function
+        checkpoint_callback = pl.callbacks.ModelCheckpoint(
+            filepath=f"{tt_logger.save_dir}"+"/checkpoints/{epoch}-{val_acc:.2f}",
+            monitor='val_acc',
+            mode='max'
+        )
 
-    runner = pl.Trainer(default_root_dir=f"{tt_logger.save_dir}",
-                        logger=tt_logger,
-                        benchmark=True,
-                        deterministic=True,
-                        distributed_backend='ddp',
-                        checkpoint_callback=checkpoint_callback,
-                        **args.trainer_params)
+        runner = pl.Trainer(default_root_dir=f"{tt_logger.save_dir}",
+                            logger=tt_logger,
+                            benchmark=True,
+                            deterministic=True,
+                            distributed_backend='ddp',
+                            checkpoint_callback=checkpoint_callback,
+                            **args.trainer_params)
     
     runner.fit(experiment, datamodule=dm)
 

@@ -17,7 +17,6 @@ class ClsExperiment(pl.LightningModule):
         super().__init__()
         self.model = model
         self.save_hyperparameters(kwargs) # save the parameters to `self.hparams`
-        print(self.hparams)
         
     
     def forward(self, x):
