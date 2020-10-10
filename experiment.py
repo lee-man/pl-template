@@ -37,7 +37,7 @@ class ClsExperiment(pl.LightningModule):
         acc = accuracy(predicted, targets)
         # self.log('train_acc', acc, on_step=False, on_epoch=True, prog_bar=True, logger=True)
         # self.log('train_loss', loss, on_step=False, on_epoch=True, prog_bar=True, logger=True)
-        return loss
+        return {'loss': loss, 'acc': acc}
     
     def validation_step(self, batch, batch_idx):
         inputs, targets = batch

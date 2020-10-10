@@ -33,6 +33,14 @@ This repo includes the general template for deep learning training, using [PyTor
       └── checkpoint
 
 ``` 
+## Lightning Philosophy
+This template structures the deep learning project into 4 parts:
+* Model specification
+* Experiment settings
+* Training settings
+* Logger settings
+
+These 4 parts are to be as independent as possible so that the code is more readable and flexible.
 
 ### DELETE EVERYTHING ABOVE FOR YOUR PROJECT  
  
