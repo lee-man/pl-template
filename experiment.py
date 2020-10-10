@@ -45,7 +45,7 @@ class ClsExperiment(pl.LightningModule):
         val_loss = F.cross_entropy(outputs, targets)
         _, predicted = outputs.max(1)
         acc = accuracy(predicted, targets)
-        self.log('val_acc', acc.item(), on_step=False, on_epoch=True, prog_bar=True, logger=True)
+        self.log('val_acc', acc, on_step=False, on_epoch=True, prog_bar=True, logger=True)
         # self.log('val_loss', val_loss, on_step=True, on_epoch=True, prog_bar=True, logger=True)
         return val_loss
     
