@@ -16,7 +16,7 @@ class ClsExperiment(pl.LightningModule):
     def __init__(self, model, **kwargs):
         super().__init__()
         self.model = model
-        self.params = kwargs
+        self.save_hyperparameters(kwargs)
         
     
     def forward(self, x):
@@ -24,8 +24,8 @@ class ClsExperiment(pl.LightningModule):
         return x
     
     def configure_optimizers(self):
-        optimizer = optim.SGD(self.parameters(), lr=self.params['lr'],
-                            momentum=self.params['momentum'], weight_decay=eval(self.params['weight_decay']))
+        optimizer = optim.SGD(self.parameters(), lr=self.hparams['lr'],
+                            momentum=self.hparams['momentum'], weight_decay=eval(self.hparams['weight_decay']))
         scheduler = optim.lr_scheduler.MultiStepLR(optimizer, milestones=[150, 250], gamma=self.params['scheduler_gamma'])
         return [optimizer], [scheduler]
     
