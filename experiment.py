@@ -41,6 +41,13 @@ class ClsExperiment(pl.LightningModule):
         # self.log('train_loss', loss, on_step=False, on_epoch=True, prog_bar=True, logger=True)
         return metrics
     
+    def training_step_end(self, batch_parts):
+        # gpu_0_prediction = batch_parts.pred[0]['pred']
+        # gpu_1_prediction = batch_parts.pred[1]['pred']
+
+        # do something with both outputs
+        return (batch_parts[0]['loss'] + batch_parts[1]['loss']) / 2
+    
     def validation_step(self, batch, batch_idx):
         inputs, targets = batch
         outputs = self(inputs)
