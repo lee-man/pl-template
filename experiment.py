@@ -35,9 +35,11 @@ class ClsExperiment(pl.LightningModule):
         loss = F.cross_entropy(outputs, targets)
         _, predicted = outputs.max(1)
         acc = accuracy(predicted, targets)
+        metrics = {'loss': loss, 'acc': acc}
+        self.log_dict(metrics)
         # self.log('train_acc', acc, on_step=False, on_epoch=True, prog_bar=True, logger=True)
         # self.log('train_loss', loss, on_step=False, on_epoch=True, prog_bar=True, logger=True)
-        return {'loss': loss, 'acc': acc}
+        return metrics
     
     def validation_step(self, batch, batch_idx):
         inputs, targets = batch
@@ -45,9 +47,17 @@ class ClsExperiment(pl.LightningModule):
         val_loss = F.cross_entropy(outputs, targets)
         _, predicted = outputs.max(1)
         acc = accuracy(predicted, targets)
-        self.log('val_acc', acc, on_step=False, on_epoch=True, prog_bar=True, logger=True)
-        # self.log('val_loss', val_loss, on_step=True, on_epoch=True, prog_bar=True, logger=True)
-        return val_loss
+        # self.log('val_acc', acc, on_step=False, on_epoch=True, prog_bar=True, logger=True)
+        # self.log('val_loss', val_loss, on_step=False, on_epoch=True, prog_bar=True, logger=True)
+        metrics = {'val_acc': acc, 'val_loss': loss}
+        self.log_dict(metrics)
+        return metrics
+    
+    def test_step(self, batch, batch_idx):
+        metrics = self.validation_step(batch, batch_idx)
+        metrics = {'test_acc': metrics['val_acc'], 'test_loss': metrics['val_loss']}
+        self.log_dict(metrics)
+
     
     
     

@@ -63,6 +63,9 @@ def main():
             **args.trainer_params
         )
 
+    # Setting checkpointing callback function
+    checkpoint_callback = 
+
     runner = pl.Trainer(default_root_dir=f"{tt_logger.save_dir}",
                         logger=tt_logger,
                         benchmark=True,
