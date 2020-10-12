@@ -67,7 +67,6 @@ def main():
     else:
         # Setting checkpointing callback function
         checkpoint_callback = pl.callbacks.ModelCheckpoint(
-            filepath=os.path.join(f"{tt_logger.save_dir}", f"{tt_logger._name}", f"{tt_logger._version}", "{epoch}-{val_acc:.2f}"),
             monitor='val_acc',
             mode='max',
             save_last=True
