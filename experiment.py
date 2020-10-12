@@ -36,7 +36,7 @@ class ClsExperiment(pl.LightningModule):
         _, predicted = outputs.max(1)
         acc = accuracy(predicted, targets)
         metrics = {'loss': loss, 'acc': acc}
-        self.log_dict(metrics, on_step=False, on_epoch=True, prog_bar=False, logger=True)
+        self.log_dict(metrics, on_step=True, on_epoch=False, prog_bar=False, logger=True)
         return metrics
     
     
