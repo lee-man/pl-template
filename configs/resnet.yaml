@@ -23,6 +23,5 @@ trainer_params:
 logger_params:
   save_dir: 'exp/'
   name: 'resnet18'
-  debug: False     # If true, it doesn't log anything.
   manual_seed: 208
 
